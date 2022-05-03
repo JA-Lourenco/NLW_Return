@@ -52,11 +52,7 @@ export function WidgetForm() {
             md:w-auto
             '
         >
-            <header>
-                <span className='text-xl leading-6'>Deixe seu feedback</span>
-
-                <CloseButton />
-            </header>
+            
 
             {
                 !feedbackType ? (
