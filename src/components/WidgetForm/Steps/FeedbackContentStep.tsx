@@ -10,12 +10,15 @@ import { ScreenshotButton } from "../ScreenshotButton"
 interface FeedbackContentStepProps {
     feedbackType: FeedbackType
     onFeedbackRestartRequested: () => void
+    onFeedbackSent: () => void
 }
 
 export function FeedbackContentStep({ 
     feedbackType,
-    onFeedbackRestartRequested
+    onFeedbackRestartRequested,
+    onFeedbackSent
  } : FeedbackContentStepProps) {
+
     const [screenshot, setScreenshot] = useState<string | null>(null)
     const [comment, setComment] = useState('')
 
@@ -28,6 +31,8 @@ export function FeedbackContentStep({
             screenshot,
             comment
         })
+
+        onFeedbackSent()
     }
 
     return (
@@ -103,7 +108,7 @@ export function FeedbackContentStep({
                             focus:ring-offset-2
                             focus:ring-offset-zinc-900
                             focus:ring-brand-500
-                            transition-color
+                            transition-colors
                             disabled:opacity-50
                             disabled:hover:bg-brand-500
                         '
