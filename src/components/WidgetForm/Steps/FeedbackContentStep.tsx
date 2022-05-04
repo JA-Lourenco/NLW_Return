@@ -1,3 +1,5 @@
+import { FormEvent, useState } from "react"
+
 import { CloseButton } from "../../CloseButton"
 
 
@@ -14,7 +16,19 @@ export function FeedbackContentStep({
     feedbackType,
     onFeedbackRestartRequested
  } : FeedbackContentStepProps) {
+    const [screenshot, setScreenshot] = useState<string | null>(null)
+    const [comment, setComment] = useState('')
+
     const feedbackTypeInfo = feedbackTypes[feedbackType]
+
+    function handleSubmitFeedback(event : FormEvent) {
+        event.preventDefault()
+
+        console.log({
+            screenshot,
+            comment
+        })
+    }
 
     return (
         <>
@@ -39,8 +53,9 @@ export function FeedbackContentStep({
                 <CloseButton />
             </header>
 
-            <form className='my-4 w-full'>
+            <form onSubmit={handleSubmitFeedback} className='my-4 w-full'>
                 <textarea 
+                    onChange={event => setComment(event.target.value)}
                     placeholder='Conte com detalhes o que está acontecendo...'
                     className='
                         min-w=[304px] 
@@ -64,7 +79,10 @@ export function FeedbackContentStep({
                 />
 
                 <footer className='flex gap-2 mt-2'>
-                    <ScreenshotButton />
+                    <ScreenshotButton 
+                        screenshot={screenshot}
+                        onScreenshotTook={setScreenshot}
+                    />
 
                     <button 
                         type='submit'
