@@ -85,6 +85,7 @@ export function FeedbackContentStep({
                     />
 
                     <button 
+                        disabled={comment.length === 0}
                         type='submit'
                         className='
                             p-2 
@@ -102,7 +103,9 @@ export function FeedbackContentStep({
                             focus:ring-offset-2
                             focus:ring-offset-zinc-900
                             focus:ring-brand-500
-                            transition-colors
+                            transition-color
+                            disabled:opacity-50
+                            disabled:hover:bg-brand-500
                         '
                     >
                         Enviar feedback
