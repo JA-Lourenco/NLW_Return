@@ -4,7 +4,6 @@ import { WidgetForm } from './WidgetForm'
 
 export function Widget() {
     
-
     return (
         <Popover className='
             absolute 
